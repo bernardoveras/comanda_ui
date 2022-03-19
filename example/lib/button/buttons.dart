@@ -1,0 +1,174 @@
+import 'package:comanda_ui/shared/colors.dart';
+import 'package:example/button/comanda_button.dart';
+import 'package:example/shared/component_appbar.dart';
+import 'package:example/shared/component_header.dart';
+import 'package:flutter/material.dart';
+
+class Buttons extends StatelessWidget {
+  const Buttons({Key? key}) : super(key: key);
+
+  Widget _buildFilledButtons(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Wrap(
+        runSpacing: 20,
+        alignment: WrapAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton(
+              'Primary',
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.icon(
+              'Primary',
+              icon: Icons.done,
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton('Primary'),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.icon('Primary', icon: Icons.done),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildOutlinedButtons(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Wrap(
+        runSpacing: 20,
+        alignment: WrapAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton(
+              'Outlined',
+              onPressed: () {},
+              outlined: true,
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.icon(
+              'Outlined',
+              icon: Icons.done,
+              onPressed: () {},
+              outlined: true,
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton(
+              'Outlined',
+              outlined: true,
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.icon(
+              'Outlined',
+              icon: Icons.done,
+              outlined: true,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextButtons(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Wrap(
+        runSpacing: 20,
+        alignment: WrapAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.text(
+              'Text',
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.text(
+              'Text',
+              icon: Icons.done,
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.text('Text'),
+          ),
+          SizedBox(
+            width: ((MediaQuery.of(context).size.width / 2) - 48) - 10,
+            child: ComandaButton.text('Text', icon: Icons.done),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, _) => [const ComponentAppBar(title: 'Buttons')],
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const ComponentHeader(title: 'Normal'),
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.symmetric(vertical: 14),
+                  decoration: BoxDecoration(
+                    color: ComandaBetColors.textFieldLight,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: _buildFilledButtons(context),
+                ),
+                const ComponentHeader(title: 'Outlined'),
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.symmetric(vertical: 14),
+                  decoration: BoxDecoration(
+                    color: ComandaBetColors.textFieldLight,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: _buildOutlinedButtons(context),
+                ),
+                const ComponentHeader(title: 'Text'),
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  margin: const EdgeInsets.symmetric(vertical: 14),
+                  decoration: BoxDecoration(
+                    color: ComandaBetColors.textFieldLight,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: _buildTextButtons(context),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

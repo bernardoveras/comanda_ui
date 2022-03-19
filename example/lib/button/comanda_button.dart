@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 enum Position { left, right }
 
-class CBButton extends StatelessWidget {
-  CBButton(
+class ComandaButton extends StatelessWidget {
+  ComandaButton(
     String text, {
     Key? key,
     IconData? icon,
@@ -34,6 +34,7 @@ class CBButton extends StatelessWidget {
     _foregroundColor = foregroundColor;
     _outlined = outlined;
     _iconPosition = iconPosition;
+    _isText = false;
   }
 
   late final String _text;
@@ -61,7 +62,9 @@ class CBButton extends StatelessWidget {
   /// Position.right by default
   late final Position _iconPosition;
 
-  CBButton.secondary(
+  late bool _isText;
+
+  ComandaButton.secondary(
     String text, {
     Key? key,
     IconData? icon,
@@ -74,6 +77,8 @@ class CBButton extends StatelessWidget {
     bool outlined = false,
     Position iconPosition = Position.right,
   }) : super(key: key) {
+    assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
+
     _text = text;
     _icon = icon;
     _onPressed = onPressed;
@@ -85,9 +90,10 @@ class CBButton extends StatelessWidget {
     _foregroundColor = foregroundColor;
     _outlined = outlined;
     _iconPosition = iconPosition;
+    _isText = false;
   }
 
-  CBButton.icon(
+  ComandaButton.icon(
     String text, {
     Key? key,
     required IconData icon,
@@ -101,6 +107,8 @@ class CBButton extends StatelessWidget {
     bool outlined = false,
     Position iconPosition = Position.right,
   }) : super(key: key) {
+    assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
+
     _text = text;
     _icon = icon;
     _onPressed = onPressed;
@@ -111,6 +119,35 @@ class CBButton extends StatelessWidget {
     _textStyle = textStyle;
     _foregroundColor = foregroundColor;
     _outlined = outlined;
+    _iconPosition = iconPosition;
+    _isText = false;
+  }
+
+  ComandaButton.text(
+    String text, {
+    Key? key,
+    IconData? icon,
+    VoidCallback? onPressed,
+    double? radius,
+    double? width,
+    double height = 50,
+    TextStyle? textStyle,
+    Color? foregroundColor,
+    Position iconPosition = Position.right,
+  }) : super(key: key) {
+    assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
+
+    _text = text;
+    _foregroundColor = null;
+    _isText = true;
+    _icon = icon;
+    _onPressed = onPressed;
+    _color = null;
+    _width = width;
+    _height = height;
+    _radius = radius;
+    _textStyle = textStyle;
+    _outlined = false;
     _iconPosition = iconPosition;
   }
 
@@ -142,15 +179,18 @@ class CBButton extends StatelessWidget {
     );
   }
 
-  Color _backgroundColor(BuildContext context) => _color ?? Theme.of(context).primaryColor;
+  Color _backgroundColor(BuildContext context) => _color ?? ComandaBetColors.primary;
 
   MaterialStateProperty<Color?>? _backgroundPropertyColor(BuildContext context) {
     if (_outlined) return MaterialStateProperty.all(Colors.transparent);
+    if (_isText) return MaterialStateProperty.all(Colors.transparent);
 
     if (_color != null) {
       return MaterialStateProperty.resolveWith<Color?>(
         (states) {
-          if (!states.contains(MaterialState.disabled)) return _backgroundColor(context);
+          if (!states.contains(MaterialState.disabled)) {
+            return _backgroundColor(context);
+          }
           return null;
         },
       );
@@ -164,7 +204,10 @@ class CBButton extends StatelessWidget {
       (states) {
         bool disabled = states.contains(MaterialState.disabled);
         if (disabled == false) {
+          if (_isText) return _foregroundColor ?? ComandaBetColors.primary;
           if (_outlined) return _backgroundColor(context);
+
+          return _foregroundColor;
         }
         return null;
       },
@@ -177,6 +220,7 @@ class CBButton extends StatelessWidget {
         if (_outlined == false) return null;
 
         bool disabled = states.contains(MaterialState.disabled);
+
         return RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: BorderSide(
@@ -189,18 +233,21 @@ class CBButton extends StatelessWidget {
   }
 
   MaterialStateProperty<Color?>? _overlayPropertyColor(BuildContext context) {
-    if (_outlined) {
-      return MaterialStateProperty.resolveWith<Color?>(
-        (states) {
-          bool disabled = states.contains(MaterialState.disabled);
-          if (disabled == false) {
-            return _color?.withOpacity(0.10) ?? Theme.of(context).primaryColor.withOpacity(0.10);
+    return MaterialStateProperty.resolveWith<Color?>(
+      (states) {
+        bool disabled = states.contains(MaterialState.disabled);
+        if (disabled == false) {
+          if (_outlined) {
+            return _color?.withOpacity(0.10) ?? ComandaBetColors.primary.withOpacity(0.10);
           }
-          return null;
-        },
-      );
-    }
-    return null;
+
+          if (_isText) {
+            return _color?.withOpacity(0.10) ?? ComandaBetColors.primary.withOpacity(0.10);
+          }
+        }
+        return null;
+      },
+    );
   }
 
   ButtonStyle? _baseButtonStyle(BuildContext context) {
