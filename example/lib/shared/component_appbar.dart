@@ -31,24 +31,28 @@ class ComponentAppBar extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Material(
-              elevation: 0,
-              color: ComandaBetColors.primaryDark,
-              borderRadius: BorderRadius.circular(100),
-              child: InkWell(
-                onTap: () {
-                  ThemePreference.changeTheme();
-                },
-                borderRadius: BorderRadius.circular(100),
-                splashColor: Colors.white.withOpacity(0.10),
-                highlightColor: Colors.white.withOpacity(0.10),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: const BoxDecoration(shape: BoxShape.circle),
-                  child: const Icon(
-                    Icons.dark_mode_rounded,
-                    color: Colors.white,
+            ValueListenableBuilder(
+              valueListenable: ThemePreference.theme,
+              builder: (context, Brightness theme, _) => Tooltip(
+                message: 'Alterar para ${theme == Brightness.dark ? 'light' : 'dark'} mode.',
+                child: Material(
+                  elevation: 0,
+                  color: theme == Brightness.light ? ComandaBetColors.primaryDark : ComandaBetColors.dark100,
+                  type: MaterialType.circle,
+                  child: InkWell(
+                    onTap: () => ThemePreference.changeTheme(),
+                    borderRadius: BorderRadius.circular(100),
+                    splashColor: Colors.white.withOpacity(0.10),
+                    highlightColor: Colors.white.withOpacity(0.10),
+                    child: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: Icon(
+                        theme == Brightness.dark ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
