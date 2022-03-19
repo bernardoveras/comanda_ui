@@ -7,19 +7,22 @@
 -------
 
 <p align="center">
-    <a href="#motivacao">Motivação</a> &bull;
+    <a href="#sobre">Sobre</a> &bull;
     <a href="#instalacao">Instalação</a> &bull;
-    <a href="#inicializacao">Inicialização</a> &bull;
     <a href="#licenca">Licença</a> 
 </p>
 
-## Motivação
+## Sobre
 Este projeto é o Design System do aplicativo [ComandaBet](https://github.com/bernardoveras/comandabet) feito em Flutter.
 
 ## Instalação
 
-```bash
-$ 
+[![Pub release](https://img.shields.io/pub/v/comanda_ui.svg?style=flat-square)](https://pub.dev/packages/comanda_ui)
+
+Importe em seu pubspec.yaml:
+
+```yaml
+comanda_ui: ^latest_version
 ```
 
 ## Licença
