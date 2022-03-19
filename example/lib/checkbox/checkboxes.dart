@@ -2,6 +2,7 @@ import 'package:comanda_ui/shared/colors.dart';
 import 'package:example/shared/component_appbar.dart';
 import 'package:flutter/material.dart';
 
+import '../shared/component_card.dart';
 import '../shared/component_header.dart';
 import 'comanda_checkbox.dart';
 
@@ -41,19 +42,7 @@ class _CheckBoxesState extends State<CheckBoxes> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ComponentHeader(title: leftCheckbox ? 'Ativo' : 'Inativo'),
-                          Container(
-                            padding: const EdgeInsets.all(24),
-                            margin: const EdgeInsets.symmetric(vertical: 14),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.textFieldLight : ComandaBetColors.dark100,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Theme.of(context).brightness == Brightness.dark
-                                  ? Border.all(
-                                      color: ComandaBetColors.primary,
-                                      width: 1.5,
-                                    )
-                                  : null,
-                            ),
+                          ComponentCard(
                             child: Wrap(
                               spacing: 20,
                               children: [
@@ -75,19 +64,7 @@ class _CheckBoxesState extends State<CheckBoxes> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           ComponentHeader(title: rightCheckbox ? 'Ativo' : 'Inativo'),
-                          Container(
-                            padding: const EdgeInsets.all(24),
-                            margin: const EdgeInsets.symmetric(vertical: 14),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.textFieldLight : ComandaBetColors.dark100,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Theme.of(context).brightness == Brightness.dark
-                                  ? Border.all(
-                                      color: ComandaBetColors.primary,
-                                      width: 1.5,
-                                    )
-                                  : null,
-                            ),
+                          ComponentCard(
                             child: Wrap(
                               spacing: 20,
                               children: [
