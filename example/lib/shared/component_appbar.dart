@@ -19,7 +19,6 @@ class ComponentAppBar extends StatelessWidget {
       toolbarHeight: 80,
       titleSpacing: 80,
       automaticallyImplyLeading: false,
-      
       backgroundColor: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.primary : ComandaBetColors.dark50,
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: const EdgeInsets.all(24),
