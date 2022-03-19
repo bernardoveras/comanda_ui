@@ -1,6 +1,7 @@
 import 'package:comanda_ui/shared/colors.dart';
 import 'package:comanda_ui/shared/weight.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ComandaCheckBox extends StatelessWidget {
   ComandaCheckBox({
@@ -85,7 +86,7 @@ class ComandaCheckBox extends StatelessWidget {
             FittedBox(
               child: Text(
                 _text!,
-                style: TextStyle(
+                style: GoogleFonts.baloo2(
                   color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey600 : Colors.white,
                   fontSize: 16,
                   fontWeight: Weight.regular(),

@@ -3,6 +3,8 @@ import 'package:example/checkbox/checkboxes.dart';
 import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
 
+import 'button/buttons.dart';
+
 void main() {
   runApp(const Application());
 }
@@ -44,8 +46,8 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
         darkTheme: CBTheme.dark,
         theme: CBTheme.light,
         themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-        // home: Buttons(),
-        home: const CheckBoxes(),
+        home: Buttons(),
+        // home: const CheckBoxes(),
       ),
     );
   }

@@ -1,12 +1,12 @@
 import 'package:comanda_ui/shared/weight.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 class CBTheme {
   const CBTheme._();
 
-  static const String fontFamily = 'Roboto';
+  // static const String fontFamily = 'Baloo';
   static final ThemeData dark = _base.copyWith(
     brightness: Brightness.dark,
     colorScheme: _base.colorScheme.copyWith(background: ComandaBetColors.backgroundDark),
@@ -42,10 +42,8 @@ class CBTheme {
         elevation: MaterialStateProperty.all(0),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
         padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 24, vertical: 14)),
-        textStyle: MaterialStateProperty.all(TextStyle(
-          fontFamily: fontFamily,
+        textStyle: MaterialStateProperty.all(GoogleFonts.baloo2(
           fontWeight: Weight.semiBold(),
-          overflow: TextOverflow.ellipsis,
         )),
       ),
     ),

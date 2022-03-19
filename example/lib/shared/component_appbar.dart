@@ -2,6 +2,7 @@ import 'package:comanda_ui/shared/colors.dart';
 import 'package:comanda_ui/shared/weight.dart';
 import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ComponentAppBar extends StatelessWidget {
   const ComponentAppBar({required this.title, Key? key}) : super(key: key);
@@ -24,10 +25,10 @@ class ComponentAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              title,
-              style: TextStyle(
+              title.toUpperCase(),
+              style: GoogleFonts.baloo2(
                 fontWeight: Weight.bold(),
-                fontSize: 24,
+                fontSize: 20,
                 color: Colors.white,
               ),
             ),
