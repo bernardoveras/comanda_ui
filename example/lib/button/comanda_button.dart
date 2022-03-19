@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:math' as math;
 
 import 'package:comanda_ui/shared/colors.dart';
+import 'package:comanda_ui/shared/colors.dart';
 import 'package:flutter/material.dart';
 
 enum Position { left, right }
@@ -186,18 +187,17 @@ class ComandaButton extends StatelessWidget {
     if (_outlined) return MaterialStateProperty.all(Colors.transparent);
     if (_isText) return MaterialStateProperty.all(Colors.transparent);
 
-    if (_color != null) {
-      return MaterialStateProperty.resolveWith<Color?>(
-        (states) {
-          if (!states.contains(MaterialState.disabled)) {
-            return _backgroundColor(context);
-          }
-          return null;
-        },
-      );
-    }
+    return MaterialStateProperty.resolveWith<Color?>(
+      (states) {
+        bool disabled = states.contains(MaterialState.disabled);
 
-    return null;
+        if (!disabled) {
+          return _backgroundColor(context);
+        } else {
+          return ComandaBetColors.grey200;
+        }
+      },
+    );
   }
 
   MaterialStateProperty<Color?>? _foregroundPropertyColor(BuildContext context) {
@@ -209,8 +209,11 @@ class ComandaButton extends StatelessWidget {
           if (_outlined) return _backgroundColor(context);
 
           return _foregroundColor;
+        } else {
+          if (!_isText) return Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey400 : ComandaBetColors.grey300;
+
+          return ComandaBetColors.grey400;
         }
-        return null;
       },
     );
   }
@@ -225,7 +228,9 @@ class ComandaButton extends StatelessWidget {
         return RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: BorderSide(
-            color: disabled ? Theme.of(context).disabledColor : _backgroundColor(context),
+            color: disabled
+                ? (Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey400 : ComandaBetColors.grey300)
+                : _backgroundColor(context),
             width: 2,
           ),
         );

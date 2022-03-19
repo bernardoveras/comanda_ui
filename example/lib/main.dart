@@ -46,7 +46,7 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
         darkTheme: CBTheme.dark,
         theme: CBTheme.light,
         themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-        home: Buttons(),
+        home: const Buttons(),
         // home: const CheckBoxes(),
       ),
     );

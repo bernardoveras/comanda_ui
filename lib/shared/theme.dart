@@ -32,7 +32,7 @@ class CBTheme {
     ),
     backgroundColor: ComandaBetColors.backgroundLight,
     scaffoldBackgroundColor: ComandaBetColors.backgroundLight,
-    disabledColor: ComandaBetColors.disable,
+    // disabledColor: ComandaBetColors.disable,
     dividerColor: ComandaBetColors.separatorLight,
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: ComandaBetColors.primary,
