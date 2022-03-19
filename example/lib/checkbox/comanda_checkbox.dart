@@ -26,7 +26,7 @@ class ComandaCheckBox extends StatelessWidget {
     }
 
     if (_value == true) return ComandaBetColors.primary;
-    return const Color(0xFF242435);
+    return const Color(0xFF2D2D44);
   }
 
   Color _backgroundColor(BuildContext context) {

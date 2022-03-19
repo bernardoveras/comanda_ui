@@ -1,6 +1,6 @@
-import 'package:comanda_ui/shared/colors.dart';
 import 'package:example/button/comanda_button.dart';
 import 'package:example/shared/component_appbar.dart';
+import 'package:example/shared/component_card.dart';
 import 'package:example/shared/component_header.dart';
 import 'package:flutter/material.dart';
 
@@ -135,35 +135,11 @@ class Buttons extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const ComponentHeader(title: 'Normal'),
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  margin: const EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: ComandaBetColors.textFieldLight,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: _buildFilledButtons(context),
-                ),
+                ComponentCard(child: _buildFilledButtons(context)),
                 const ComponentHeader(title: 'Outlined'),
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  margin: const EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: ComandaBetColors.textFieldLight,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: _buildOutlinedButtons(context),
-                ),
+                ComponentCard(child: _buildOutlinedButtons(context)),
                 const ComponentHeader(title: 'Text'),
-                Container(
-                  padding: const EdgeInsets.all(24),
-                  margin: const EdgeInsets.symmetric(vertical: 14),
-                  decoration: BoxDecoration(
-                    color: ComandaBetColors.textFieldLight,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: _buildTextButtons(context),
-                ),
+                ComponentCard(child: _buildTextButtons(context)),
               ],
             ),
           ),

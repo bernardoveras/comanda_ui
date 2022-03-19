@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 enum Position { left, right }
 
+// ignore: must_be_immutable
 class ComandaButton extends StatelessWidget {
   ComandaButton(
     String text, {

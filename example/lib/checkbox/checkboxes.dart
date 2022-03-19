@@ -1,4 +1,3 @@
-import 'package:comanda_ui/shared/colors.dart';
 import 'package:example/shared/component_appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +6,7 @@ import '../shared/component_header.dart';
 import 'comanda_checkbox.dart';
 
 class CheckBoxes extends StatefulWidget {
-  CheckBoxes({Key? key}) : super(key: key);
+  const CheckBoxes({Key? key}) : super(key: key);
 
   @override
   State<CheckBoxes> createState() => _CheckBoxesState();
