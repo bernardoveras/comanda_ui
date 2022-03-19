@@ -13,7 +13,7 @@
 </p>
 
 ## Sobre
-Este projeto é o Design System do aplicativo [ComandaBet](https://github.com/bernardoveras/comandabet) feito em Flutter.
+Este projeto é um `Design System` do aplicativo [ComandaBet](https://github.com/bernardoveras/comandabet) feito em Flutter.
 
 ## Instalação
 
