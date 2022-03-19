@@ -4,6 +4,7 @@ import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
 
 import 'button/buttons.dart';
+import 'home/home.dart';
 
 void main() {
   runApp(const Application());
@@ -46,8 +47,7 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
         darkTheme: CBTheme.dark,
         theme: CBTheme.light,
         themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-        home: const Buttons(),
-        // home: const CheckBoxes(),
+        home: Home(),
       ),
     );
   }
