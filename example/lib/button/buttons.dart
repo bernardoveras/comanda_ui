@@ -1,8 +1,9 @@
 import 'package:example/button/comanda_button.dart';
-import 'package:example/shared/component_appbar.dart';
 import 'package:example/shared/component_card.dart';
 import 'package:example/shared/component_header.dart';
 import 'package:flutter/material.dart';
+
+import '../shared/component_scaffold.dart';
 
 class Buttons extends StatelessWidget {
   const Buttons({Key? key}) : super(key: key);
@@ -123,28 +124,16 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: NestedScrollView(
-        floatHeaderSlivers: true,
-        headerSliverBuilder: (context, _) => [const ComponentAppBar(title: 'Buttons')],
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const ComponentHeader(title: 'Normal'),
-                ComponentCard(child: _buildFilledButtons(context)),
-                const ComponentHeader(title: 'Outlined'),
-                ComponentCard(child: _buildOutlinedButtons(context)),
-                const ComponentHeader(title: 'Text'),
-                ComponentCard(child: _buildTextButtons(context)),
-              ],
-            ),
-          ),
-        ),
-      ),
+    return ComponentScaffold(
+      'Button',
+      children: <Widget>[
+        const ComponentHeader(title: 'Normal'),
+        ComponentCard(child: _buildFilledButtons(context)),
+        const ComponentHeader(title: 'Outlined'),
+        ComponentCard(child: _buildOutlinedButtons(context)),
+        const ComponentHeader(title: 'Text'),
+        ComponentCard(child: _buildTextButtons(context)),
+      ],
     );
   }
 }

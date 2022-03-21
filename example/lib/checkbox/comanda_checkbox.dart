@@ -53,48 +53,51 @@ class ComandaCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () => _onChanged?.call(!_value),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            height: 30,
-            width: 30,
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.linearToEaseOut,
-            decoration: BoxDecoration(
-              color: _backgroundColor(context),
-              border: Border.all(
-                color: _borderColor(context),
-                width: 2,
+    return MouseRegion(
+      cursor: _onChanged != null ? SystemMouseCursors.click :SystemMouseCursors.noDrop,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => _onChanged?.call(!_value),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedContainer(
+              height: 30,
+              width: 30,
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.linearToEaseOut,
+              decoration: BoxDecoration(
+                color: _backgroundColor(context),
+                border: Border.all(
+                  color: _borderColor(context),
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(8),
               ),
-              borderRadius: BorderRadius.circular(8),
+              child: _value == true
+                  ? FittedBox(
+                      child: Icon(
+                        Icons.check_rounded,
+                        color: _iconColor(context),
+                      ),
+                    )
+                  : null,
             ),
-            child: _value == true
-                ? FittedBox(
-                    child: Icon(
-                      Icons.check_rounded,
-                      color: _iconColor(context),
-                    ),
-                  )
-                : null,
-          ),
-          if (_text != null) ...{
-            const SizedBox(width: 10),
-            FittedBox(
-              child: Text(
-                _text!,
-                style: GoogleFonts.baloo2(
-                  color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey600 : Colors.white,
-                  fontSize: 16,
-                  fontWeight: Weight.regular(),
+            if (_text != null) ...{
+              const SizedBox(width: 10),
+              FittedBox(
+                child: Text(
+                  _text!,
+                  style: GoogleFonts.baloo2(
+                    color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey600 : Colors.white,
+                    fontSize: 16,
+                    fontWeight: Weight.regular,
+                  ),
                 ),
               ),
-            ),
-          },
-        ],
+            },
+          ],
+        ),
       ),
     );
   }

@@ -43,7 +43,7 @@ class CBTheme {
         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
         padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 24, vertical: 14)),
         textStyle: MaterialStateProperty.all(GoogleFonts.baloo2(
-          fontWeight: Weight.semiBold(),
+          fontWeight: Weight.semiBold,
         )),
       ),
     ),

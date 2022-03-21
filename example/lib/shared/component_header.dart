@@ -14,7 +14,7 @@ class ComponentHeader extends StatelessWidget {
       title,
       style: GoogleFonts.baloo2(
         fontSize: 18,
-        fontWeight: Weight.semiBold(),
+        fontWeight: Weight.semiBold,
         color: Theme.of(context).brightness == Brightness.light ? ComandaBetColors.blueGrey : Colors.white,
       ),
     );

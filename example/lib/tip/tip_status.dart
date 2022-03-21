@@ -1,0 +1,1 @@
+enum TipStatus { green, red, refund, cancelled }

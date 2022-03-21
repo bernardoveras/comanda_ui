@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'dart:math' as math;
 
 import 'package:comanda_ui/shared/colors.dart';
-import 'package:comanda_ui/shared/colors.dart';
 import 'package:flutter/material.dart';
 
 enum Position { left, right }
@@ -15,13 +14,14 @@ class ComandaButton extends StatelessWidget {
     IconData? icon,
     VoidCallback? onPressed,
     Color? color,
-    double? radius,
+    double radius = 8,
     double? width,
-    double height = 50,
+    double? height = 50,
     TextStyle? textStyle,
     Color? foregroundColor,
     bool outlined = false,
     Position iconPosition = Position.right,
+    EdgeInsetsGeometry? padding,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
@@ -29,14 +29,15 @@ class ComandaButton extends StatelessWidget {
     _icon = icon;
     _onPressed = onPressed;
     _color = color;
-    _radius = radius;
     _width = width;
     _height = height;
     _textStyle = textStyle;
     _foregroundColor = foregroundColor;
     _outlined = outlined;
     _iconPosition = iconPosition;
+    _padding = padding;
     _isText = false;
+    _radius = radius;
   }
 
   late final String _text;
@@ -48,10 +49,10 @@ class ComandaButton extends StatelessWidget {
   late final Color? _color;
 
   ///  8 by default
-  late final double? _radius;
+  late final double _radius;
 
   ///  50 by default
-  late final double _height;
+  late final double? _height;
   late final double? _width;
 
   late final TextStyle? _textStyle;
@@ -64,6 +65,8 @@ class ComandaButton extends StatelessWidget {
   /// Position.right by default
   late final Position _iconPosition;
 
+  late final EdgeInsetsGeometry? _padding;
+
   late bool _isText;
 
   ComandaButton.secondary(
@@ -71,13 +74,14 @@ class ComandaButton extends StatelessWidget {
     Key? key,
     IconData? icon,
     VoidCallback? onPressed,
-    double? radius,
+    double radius = 8,
     double? width,
-    double height = 50,
+    double? height = 50,
     TextStyle? textStyle,
     Color? foregroundColor,
     bool outlined = false,
     Position iconPosition = Position.right,
+    EdgeInsetsGeometry? padding,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
@@ -93,6 +97,7 @@ class ComandaButton extends StatelessWidget {
     _outlined = outlined;
     _iconPosition = iconPosition;
     _isText = false;
+    _padding = padding;
   }
 
   ComandaButton.icon(
@@ -101,13 +106,14 @@ class ComandaButton extends StatelessWidget {
     required IconData icon,
     VoidCallback? onPressed,
     Color? color,
-    double? radius,
+    double radius = 8,
     double? width,
-    double height = 50,
+    double? height = 50,
     TextStyle? textStyle,
     Color? foregroundColor,
     bool outlined = false,
     Position iconPosition = Position.right,
+    EdgeInsetsGeometry? padding,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
@@ -123,6 +129,7 @@ class ComandaButton extends StatelessWidget {
     _outlined = outlined;
     _iconPosition = iconPosition;
     _isText = false;
+    _padding = padding;
   }
 
   ComandaButton.text(
@@ -130,17 +137,18 @@ class ComandaButton extends StatelessWidget {
     Key? key,
     IconData? icon,
     VoidCallback? onPressed,
-    double? radius,
+    double radius = 8,
     double? width,
-    double height = 50,
+    double? height = 50,
     TextStyle? textStyle,
     Color? foregroundColor,
     Position iconPosition = Position.right,
+    EdgeInsetsGeometry? padding,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
     _text = text;
-    _foregroundColor = null;
+    _foregroundColor = foregroundColor;
     _isText = true;
     _icon = icon;
     _onPressed = onPressed;
@@ -151,6 +159,7 @@ class ComandaButton extends StatelessWidget {
     _textStyle = textStyle;
     _outlined = false;
     _iconPosition = iconPosition;
+    _padding = padding;
   }
 
   double _calculateGap(BuildContext context) {
@@ -169,13 +178,13 @@ class ComandaButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         if (_iconPosition == Position.left) ...{
-          Icon(_icon),
+          FittedBox(child: Icon(_icon)),
           SizedBox(width: _calculateGap(context)),
         },
         Flexible(child: _buildText()),
         if (_iconPosition == Position.right) ...{
           SizedBox(width: _calculateGap(context)),
-          Icon(_icon),
+          FittedBox(child: Icon(_icon)),
         },
       ],
     );
@@ -226,7 +235,7 @@ class ComandaButton extends StatelessWidget {
         bool disabled = states.contains(MaterialState.disabled);
 
         return RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(_radius),
           side: BorderSide(
             color: disabled
                 ? (Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey400 : ComandaBetColors.grey300)
@@ -259,9 +268,10 @@ class ComandaButton extends StatelessWidget {
   ButtonStyle? _baseButtonStyle(BuildContext context) {
     return Theme.of(context).elevatedButtonTheme.style?.copyWith(
           backgroundColor: _backgroundPropertyColor(context),
-          shape: _radius != null ? MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(_radius!))) : null,
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(_radius))),
           textStyle: MaterialStateProperty.all(_textStyle),
           foregroundColor: MaterialStateProperty.all(_foregroundColor),
+          padding: MaterialStateProperty.all(_padding),
         );
   }
 

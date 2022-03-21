@@ -1,9 +1,8 @@
 import 'package:comanda_ui/shared/theme.dart';
-import 'package:example/checkbox/checkboxes.dart';
+import 'package:example/shared/utils/snackbar_service.dart';
 import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
 
-import 'button/buttons.dart';
 import 'home/home.dart';
 
 void main() {
@@ -43,11 +42,12 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
       valueListenable: ThemePreference.theme,
       builder: (context, Brightness theme, _) => MaterialApp(
         title: 'Comanda Design System',
+        navigatorKey: ComandaSnackBarService.navigatorKey,
         debugShowCheckedModeBanner: false,
         darkTheme: CBTheme.dark,
         theme: CBTheme.light,
         themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
-        home: Home(),
+        home: const Home(),
       ),
     );
   }
