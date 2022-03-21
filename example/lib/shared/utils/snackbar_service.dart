@@ -18,15 +18,19 @@ class ComandaSnackBarService {
   static void show(
     String message, {
     String? title,
-    bool showCloseButton = true,
-    Widget? suffixIcon,
+    bool showSuffixIcon = true,
+    Widget? suffix,
+    IconData? suffixIcon,
+    VoidCallback? onSuffixIconPressed,
   }) {
     ScaffoldMessenger.of(navigatorKey.currentState!.overlay!.context).showSnackBar(SnackBar(
       content: ComandaSnackBar(
         title: title,
         message: message,
-        showCloseButton: showCloseButton,
+        showSuffixIcon: showSuffixIcon,
         suffixIcon: suffixIcon,
+        suffix: suffix,
+        onSuffixIconPressed: onSuffixIconPressed,
       ),
       behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.all(20),

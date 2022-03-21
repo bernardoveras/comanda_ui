@@ -1,4 +1,3 @@
-
 import 'package:comanda_ui/shared/weight.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,15 +5,19 @@ import 'package:google_fonts/google_fonts.dart';
 class ComandaSnackBar extends StatelessWidget {
   final String? title;
   final String message;
-  final Widget? suffixIcon;
-  final bool showCloseButton;
+  final IconData? suffixIcon;
+  final Widget? suffix;
+  final bool showSuffixIcon;
+  final VoidCallback? onSuffixIconPressed;
 
   const ComandaSnackBar({
     Key? key,
     this.title,
     required this.message,
     this.suffixIcon,
-    this.showCloseButton = true,
+    this.suffix,
+    this.showSuffixIcon = true,
+    this.onSuffixIconPressed,
   }) : super(key: key);
 
   @override
@@ -33,6 +36,7 @@ class ComandaSnackBar extends StatelessWidget {
                   style: GoogleFonts.baloo2(
                     fontWeight: Weight.semiBold,
                     fontSize: 18,
+                    color: Colors.white,
                   ),
                 ),
               },
@@ -48,15 +52,15 @@ class ComandaSnackBar extends StatelessWidget {
             ],
           ),
         ),
-        if (suffixIcon != null) ...{
-          suffixIcon!,
-        } else if (showCloseButton) ...{
+        if (suffix != null) ...{
+          suffix!,
+        } else if (showSuffixIcon) ...{
           SizedBox(
             height: 40,
             width: 40,
             child: IconButton(
-              icon: const Icon(
-                Icons.close_rounded,
+              icon: Icon(
+                suffixIcon ?? Icons.close_rounded,
                 color: Colors.white,
               ),
               splashColor: Colors.transparent,
@@ -64,7 +68,11 @@ class ComandaSnackBar extends StatelessWidget {
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
               onPressed: () {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                if (onSuffixIconPressed != null) {
+                  onSuffixIconPressed?.call();
+                } else {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                }
               },
             ),
           ),

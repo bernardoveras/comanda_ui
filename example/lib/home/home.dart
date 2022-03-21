@@ -2,6 +2,8 @@ import 'package:example/button/buttons.dart';
 import 'package:example/button/comanda_button.dart';
 import 'package:example/checkbox/checkboxes.dart';
 import 'package:example/shared/component_appbar.dart';
+import 'package:example/snackbar/snackbars.dart';
+import 'package:example/textfields/text_fields.dart';
 import 'package:flutter/material.dart';
 
 import '../tip/tips.dart';
@@ -35,7 +37,19 @@ class Home extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const CheckBoxes()),
                   );
                 }),
-                ComandaButton('Tips', onPressed: () {
+                ComandaButton('TextField', onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TextFields()),
+                  );
+                }),
+                ComandaButton('SnackBar', onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SnackBars()),
+                  );
+                }),
+                ComandaButton('Tip', onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Tips()),

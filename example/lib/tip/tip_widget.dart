@@ -11,6 +11,133 @@ import '../button/comanda_button.dart';
 import '../shared/component_card.dart';
 import '../shared/utils/snackbar_service.dart';
 
+class TipSkeletonWidget extends StatelessWidget {
+  const TipSkeletonWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ComponentCard(
+      padding: const EdgeInsets.all(20),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              runAlignment: WrapAlignment.spaceBetween,
+              spacing: 20,
+              children: const [
+                // Mercado
+                TipInfoShimmer(
+                  firstWidth: 65,
+                  secondWidth: 100,
+                ),
+                //Tempo
+                TipInfoShimmer(
+                  firstWidth: 50,
+                  secondWidth: 70,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              runAlignment: WrapAlignment.spaceBetween,
+              spacing: 20,
+              children: const [
+                //Jogo
+                TipInfoShimmer(
+                  firstWidth: 50,
+                  secondWidth: 165,
+                ),
+                // Odd Sugerida
+                TipInfoShimmer(
+                  firstWidth: 95,
+                  secondWidth: 50,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          //Observação
+          const TipInfoShimmer(
+            firstWidth: 90,
+            secondWidth: 200,
+          ),
+          const SizedBox(height: 20),
+          //Resultado
+          const TipInfoShimmer(
+            firstWidth: 70,
+            secondWidth: 90,
+            secondHeight: 35,
+          ),
+          const SizedBox(height: 20),
+          // Ir para Bet365
+          const TipInfoShimmer(
+            secondWidth: double.infinity,
+            secondHeight: 45,
+            hideFirst: true,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TipInfoShimmer extends StatelessWidget {
+  const TipInfoShimmer({
+    Key? key,
+    this.firstWidth = 65,
+    this.firstHeight = 14,
+    this.secondWidth = 100,
+    this.secondHeight = 14,
+    this.hideFirst = false,
+  }) : super(key: key);
+
+  final double firstWidth;
+  final double firstHeight;
+
+  final double secondWidth;
+  final double secondHeight;
+
+  final bool hideFirst;
+
+  Color _shimmerColor(BuildContext context) => Theme.of(context).brightness == Brightness.light ? Color(0xFFDFDFDF) : Colors.grey.withOpacity(0.1);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (hideFirst == false) ...{
+          Container(
+            width: firstWidth,
+            height: firstHeight,
+            decoration: BoxDecoration(
+              color: _shimmerColor(context),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          const SizedBox(height: 10),
+        },
+        Container(
+          width: secondWidth,
+          height: secondHeight,
+          decoration: BoxDecoration(
+            color: _shimmerColor(context),
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class TipWidget extends StatelessWidget {
   const TipWidget({
     Key? key,
@@ -21,7 +148,7 @@ class TipWidget extends StatelessWidget {
     required this.suggestedOdd,
     this.result,
     required this.link,
-    this.adminMode = true,
+    this.adminMode = false,
   }) : super(key: key);
 
   final String market;

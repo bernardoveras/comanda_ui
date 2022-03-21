@@ -24,6 +24,17 @@ class Tips extends StatelessWidget {
           details: 'Entrar em canto limite!',
           result: TipStatus.green,
         ),
+        TipSkeletonWidget(),
+        TipWidget(
+          market: 'Escanteios',
+          match: 'Flamengo x Vasco',
+          link: 'http://www.bet365.com',
+          suggestedOdd: 1.82,
+          timeInMinutes: 37,
+          details: 'Entrar em canto limite!',
+          result: TipStatus.red,
+          adminMode: true,
+        ),
       ],
     );
   }
