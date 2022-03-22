@@ -3,6 +3,7 @@ import 'package:example/shared/utils/snackbar_service.dart';
 import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
 
+import 'comanda.dart';
 import 'home/home.dart';
 
 void main() {
@@ -42,7 +43,7 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
       valueListenable: ThemePreference.theme,
       builder: (context, Brightness theme, _) => MaterialApp(
         title: 'Comanda Design System',
-        navigatorKey: ComandaSnackBarService.navigatorKey,
+        navigatorKey: Comanda.navigatorKey,
         debugShowCheckedModeBanner: false,
         darkTheme: CBTheme.dark,
         theme: CBTheme.light,

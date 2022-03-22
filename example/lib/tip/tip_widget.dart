@@ -1,5 +1,6 @@
 import 'package:comanda_ui/shared/colors.dart';
 import 'package:comanda_ui/shared/weight.dart';
+import 'package:example/shared/utils/modal_service.dart';
 import 'package:example/tip/tip_info.dart';
 import 'package:example/tip/tip_result.dart';
 import 'package:example/tip/tip_status.dart';
@@ -322,6 +323,13 @@ class TipWidget extends StatelessWidget {
                 height: 40,
                 onPressed: () {
                   ///TODO: Abrir o link do palpite
+                  ComandaModalService.show(
+                    title: 'Deseja sair da sua conta?',
+                    description: 'Caso você sair da sua conta, irá perder o histórico de cliques.',
+                    primaryButtonText: 'Sair da conta',
+                    secondaryButtonText: 'Não',
+
+                  );
                 },
               ),
             ),

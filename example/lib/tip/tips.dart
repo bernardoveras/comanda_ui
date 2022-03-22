@@ -24,7 +24,6 @@ class Tips extends StatelessWidget {
           details: 'Entrar em canto limite!',
           result: TipStatus.green,
         ),
-        TipSkeletonWidget(),
         TipWidget(
           market: 'Escanteios',
           match: 'Flamengo x Vasco',
@@ -35,6 +34,7 @@ class Tips extends StatelessWidget {
           result: TipStatus.red,
           adminMode: true,
         ),
+        TipSkeletonWidget(),
       ],
     );
   }
