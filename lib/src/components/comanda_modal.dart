@@ -1,10 +1,9 @@
-
-import 'package:comanda_ui/shared/colors.dart';
-import 'package:comanda_ui/shared/weight.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../button/comanda_button.dart';
+import '../common/theme/colors.dart';
+import '../common/theme/weight.dart';
+import 'comanda_button.dart';
 
 class ComandaModal extends StatelessWidget {
   const ComandaModal({

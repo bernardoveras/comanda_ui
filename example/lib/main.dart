@@ -1,9 +1,7 @@
-import 'package:comanda_ui/shared/theme.dart';
-import 'package:example/shared/utils/snackbar_service.dart';
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:example/shared/utils/theme_preference.dart';
 import 'package:flutter/material.dart';
 
-import 'comanda.dart';
 import 'home/home.dart';
 
 void main() {
@@ -45,8 +43,8 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
         title: 'Comanda Design System',
         navigatorKey: Comanda.navigatorKey,
         debugShowCheckedModeBanner: false,
-        darkTheme: CBTheme.dark,
-        theme: CBTheme.light,
+        darkTheme: ComandaBetTheme.dark,
+        theme: ComandaBetTheme.light,
         themeMode: theme == Brightness.light ? ThemeMode.light : ThemeMode.dark,
         home: const Home(),
       ),

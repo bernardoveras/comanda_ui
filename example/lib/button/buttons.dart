@@ -1,4 +1,5 @@
-import 'package:example/button/comanda_button.dart';
+
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:example/shared/component_card.dart';
 import 'package:example/shared/component_header.dart';
 import 'package:flutter/material.dart';

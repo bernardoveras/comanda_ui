@@ -1,6 +1,5 @@
-import 'package:comanda_ui/shared/colors.dart';
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:example/shared/component_card.dart';
-import 'package:example/snackbar/comanda_snackbar.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/component_scaffold.dart';

@@ -1,6 +1,6 @@
 name: comanda_ui
 description: ComandaBet Design System
-version: 0.0.1
+version: 1.0.0
 homepage:
 
 environment:
@@ -18,14 +18,3 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 flutter:
-
-  # fonts:
-  #   - family: Baloo2
-  #     fonts:
-  #       - asset: assets/fonts/baloo2/Baloo2-Regular.ttf
-  #       - asset: assets/fonts/baloo2/Baloo2-Medium.ttf
-  #         weight: 500
-  #       - asset: assets/fonts/baloo2/Baloo2-SemiBold.ttf
-  #         weight: 600
-  #       - asset: assets/fonts/baloo2/Baloo2-Bold.ttf
-  #         weight: 700

@@ -1,8 +1,5 @@
-import 'package:comanda_ui/shared/colors.dart';
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:flutter/material.dart';
-
-import '../../comanda.dart';
-import '../../snackbar/comanda_snackbar.dart';
 
 abstract class IComandaSnackBarService {}
 

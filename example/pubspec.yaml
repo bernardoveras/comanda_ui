@@ -9,9 +9,12 @@ environment:
 dependencies:
   comanda_ui:
     path: ../
+
   google_fonts: ^2.3.1
+  
   flutter:
     sdk: flutter
+    
 
 
 dev_dependencies:

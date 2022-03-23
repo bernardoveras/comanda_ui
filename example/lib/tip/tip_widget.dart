@@ -1,6 +1,4 @@
-import 'package:comanda_ui/shared/colors.dart';
-import 'package:comanda_ui/shared/weight.dart';
-import 'package:example/shared/utils/modal_service.dart';
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:example/tip/tip_info.dart';
 import 'package:example/tip/tip_result.dart';
 import 'package:example/tip/tip_status.dart';
@@ -8,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../button/comanda_button.dart';
 import '../shared/component_card.dart';
-import '../shared/utils/snackbar_service.dart';
 
 class TipSkeletonWidget extends StatelessWidget {
   const TipSkeletonWidget({Key? key}) : super(key: key);

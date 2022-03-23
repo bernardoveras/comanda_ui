@@ -1,6 +1,4 @@
-
-import 'package:comanda_ui/shared/colors.dart';
-import 'package:comanda_ui/shared/weight.dart';
+import 'package:comanda_ui/comanda_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

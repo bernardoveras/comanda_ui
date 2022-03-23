@@ -1,8 +1,9 @@
 import 'dart:ui';
 import 'dart:math' as math;
 
-import 'package:comanda_ui/shared/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../common/theme/colors.dart';
 
 enum Position { left, right }
 
@@ -22,7 +23,6 @@ class ComandaButton extends StatelessWidget {
     bool outlined = false,
     Position iconPosition = Position.right,
     EdgeInsetsGeometry? padding,
-    Color? borderColor,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
@@ -39,7 +39,6 @@ class ComandaButton extends StatelessWidget {
     _padding = padding;
     _isText = false;
     _radius = radius;
-    _borderColor = borderColor;
   }
 
   late final String _text;
@@ -63,7 +62,6 @@ class ComandaButton extends StatelessWidget {
   late final Color? _foregroundColor;
 
   late final bool _outlined;
-  late final Color? _borderColor;
 
   /// Position.right by default
   late final Position _iconPosition;
@@ -147,7 +145,6 @@ class ComandaButton extends StatelessWidget {
     Color? foregroundColor,
     Position iconPosition = Position.right,
     EdgeInsetsGeometry? padding,
-    Color? borderColor,
   }) : super(key: key) {
     assert(text.isNotEmpty, 'A propriedade "text" não pode ser vazia.');
 
@@ -164,7 +161,6 @@ class ComandaButton extends StatelessWidget {
     _outlined = false;
     _iconPosition = iconPosition;
     _padding = padding;
-    _borderColor = borderColor;
   }
 
   double _calculateGap(BuildContext context) {
@@ -244,7 +240,7 @@ class ComandaButton extends StatelessWidget {
           side: BorderSide(
             color: disabled
                 ? (Theme.of(context).brightness == Brightness.light ? ComandaBetColors.grey400 : ComandaBetColors.grey300)
-                : _borderColor ?? _backgroundColor(context),
+                :  _backgroundColor(context),
             width: 1.5,
           ),
         );

@@ -1,10 +1,10 @@
-import 'package:comanda_ui/shared/weight.dart';
+import 'weight.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
-class CBTheme {
-  const CBTheme._();
+class ComandaBetTheme {
+  const ComandaBetTheme._();
 
   // static const String fontFamily = 'Baloo';
   static final ThemeData dark = _base.copyWith(
@@ -17,12 +17,13 @@ class CBTheme {
   static final ThemeData light = _base;
 
   static final ThemeData _base = ThemeData(
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     useMaterial3: true,
-    dividerTheme: const DividerThemeData(
-      thickness: 2,
-      color: ComandaBetColors.separatorLight,
-    ),
+    textTheme: GoogleFonts.baloo2TextTheme(),
     primaryColor: ComandaBetColors.primary,
+    backgroundColor: ComandaBetColors.backgroundLight,
+    scaffoldBackgroundColor: ComandaBetColors.backgroundLight,
+    dividerColor: ComandaBetColors.separatorLight,
     colorScheme: ColorScheme.fromSeed(
       primary: ComandaBetColors.primary,
       seedColor: ComandaBetColors.primary,
@@ -30,10 +31,19 @@ class CBTheme {
       brightness: Brightness.light,
       background: ComandaBetColors.backgroundLight,
     ),
-    backgroundColor: ComandaBetColors.backgroundLight,
-    scaffoldBackgroundColor: ComandaBetColors.backgroundLight,
-    // disabledColor: ComandaBetColors.disable,
-    dividerColor: ComandaBetColors.separatorLight,
+    dividerTheme: const DividerThemeData(
+      thickness: 2,
+      color: ComandaBetColors.separatorLight,
+    ),
+    cardTheme: const CardTheme(
+      elevation: 3,
+      shadowColor: Colors.black45,
+    ),
+    appBarTheme: const AppBarTheme(
+      elevation: 0,
+      color: ComandaBetColors.primary,
+      iconTheme: IconThemeData(),
+    ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: ComandaBetColors.primary,
     ),
@@ -42,9 +52,7 @@ class CBTheme {
         elevation: MaterialStateProperty.all(0),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
         padding: MaterialStateProperty.all(const EdgeInsets.symmetric(horizontal: 24, vertical: 14)),
-        textStyle: MaterialStateProperty.all(GoogleFonts.baloo2(
-          fontWeight: Weight.semiBold,
-        )),
+        textStyle: MaterialStateProperty.all(GoogleFonts.baloo2(fontWeight: Weight.semiBold)),
       ),
     ),
   );

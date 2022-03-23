@@ -1,3 +1,8 @@
-## 0.0.1
+## [1.0.0] - Initial Release
 
-* TODO: Describe initial release.
+- Added ComandaBet theme
+- Added Button component
+- Added TextField component
+- Added Checkbox component
+- Added SnackBar service and component
+- Added Modal service and component
