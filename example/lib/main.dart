@@ -41,7 +41,7 @@ class _ApplicationState extends State<Application> with WidgetsBindingObserver {
       valueListenable: ThemePreference.theme,
       builder: (context, Brightness theme, _) => MaterialApp(
         title: 'Comanda Design System',
-        navigatorKey: Comanda.navigatorKey,
+        navigatorKey: ComandaBet.navigatorKey,
         debugShowCheckedModeBanner: false,
         darkTheme: ComandaBetTheme.dark,
         theme: ComandaBetTheme.light,

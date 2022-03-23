@@ -14,7 +14,7 @@ class ComandaSnackBarService {
     IconData? suffixIcon,
     VoidCallback? onSuffixIconPressed,
   }) {
-    ScaffoldMessenger.of(Comanda.navigatorKey.currentState!.overlay!.context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(ComandaBet.navigatorKey.currentState!.overlay!.context).showSnackBar(SnackBar(
       content: ComandaSnackBar(
         title: title,
         message: message,

@@ -21,7 +21,7 @@ class ComandaModalService implements IComandaModalService {
     bool closeOnClickButton = true,
   }) {
     return showModalBottomSheet(
-      context: Comanda.navigatorKey.currentState!.overlay!.context,
+      context: ComandaBet.navigatorKey.currentState!.overlay!.context,
       builder: (_) => ComandaModal(
         key: key,
         title: title,

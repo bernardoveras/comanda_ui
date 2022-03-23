@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Comanda {
-  Comanda._();
+class ComandaBet {
+  ComandaBet._();
 
   ///Caso for usar com o GetX:
   ///
