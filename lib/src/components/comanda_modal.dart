@@ -61,9 +61,9 @@ class ComandaModal extends StatelessWidget {
                 Text(
                   title!,
                   style: GoogleFonts.baloo2(
-                    fontSize: 16,
-                    fontWeight: Weight.medium,
-                    color: ComandaBetColors.grey400,
+                    fontSize: 18,
+                    fontWeight: Weight.semiBold,
+                    color: ComandaBetColors.grey600,
                   ),
                   textAlign: TextAlign.center,
                 ),
